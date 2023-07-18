@@ -1,9 +1,12 @@
 'use client'
 import { MyContext } from "@/context"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 const Filters = () => {
-    const { setFilterSelect, handleKeyUp, setDataGitHub, handleButtonClick } = useContext(MyContext)
+    const { setFilterSelect, filterSelect, handleKeyUp, setDataGitHub, handleButtonClick } = useContext(MyContext)
+    useEffect(() => {
+        handleButtonClick();
+      }, [filterSelect]);
     return (
         <div className="filters bg-gray-950 w-3/12 h-[calc(100vh-81px)] border-r pt-10 px-5">
             <h4

@@ -1,5 +1,7 @@
 'use server'
 import './globals.css'
+// import {store} from "@/store"
+// import { Provider } from "react-redux"
 
 // export const metadata = {
 //   title:{
@@ -15,7 +17,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="text-gray-200 ">
-        <main>{children}</main>
+        {/* <Provider store={store} > */}
+          <main>{children}</main>
+        {/* </Provider> */}
+
       </body>
     </html>
   )

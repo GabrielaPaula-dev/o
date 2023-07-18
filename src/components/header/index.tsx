@@ -1,17 +1,22 @@
 'use client'
+import { BiSearchAlt } from "react-icons/bi"
 import { MyContext } from "@/context"
 import Link from "next/link"
 import { useContext } from "react"
 import Image from "next/image"
+// import { useSelector } from "react-redux"
+// import favoriteReducer from "../../store/reducers/favorites"
+
 
 const Header = () => {
+    // const favorites = useSelector((state):any => state.favoriteReducer)
     const { setSearchSubmit, handleButtonClick, handleKeyUp } = useContext(MyContext)
     const handleInputChange = (event: any) => {
         setSearchSubmit(event.target.value);
     };
-
+// console.log(favorites)
     return (
-        <header className=" flex bg-gray-950 items-center space-x-5 border-b ">
+        <header className=" flex bg-gray-950 items-center spac border-b ">
             <Image
                 src="/logo-github.png"
                 alt="Logo do GitHub"
@@ -19,17 +24,17 @@ const Header = () => {
                 height={80}
             />
             <input
-                type="search"
+                type="text"
                 onChange={handleInputChange}
                 onKeyUp={handleKeyUp}
                 placeholder="Search to jump..."
-                className="w-1/2 bg-transparent rounded ring-2 ring-offset-1 ring-offset-gray-200 ring-gray-800 px-2.5 py-1 placeholder:text-gray-300"
+                className="w-1/2 bg-transparent rounde px-3.5 py-1.5 placeholder:text-gray-300 border border-r-0 focus:outline-none rounded-l-md"
             />
             <button
                 type="submit"
                 onClick={handleButtonClick}
-                className="text-lg hover:underline hover:underline-offset-4 ">
-                Search
+                className=" border pr-4 py-2.5 border-l-0 rounded-r-md">
+                <BiSearchAlt />
             </button>
             <Link
                 href={"/favorites"}

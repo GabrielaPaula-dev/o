@@ -1,10 +1,10 @@
 // import { addFavorites } from "@/store/actions/add-favorites"
 // import { useDispatch } from "react-redux"
 
-const ButtonAddFavourites = () => {
+const ButtonAddFavourites = ({item}:any) => {
     // const dispatch = useDispatch()
+    // onClick={() => dispatch(addFavorites({item}))} 
     return (
-        // <button onClick={() => dispatch(addFavorites({}))}>Add Favoritos</button>
         <button className="py-2.5 px-2.5 border rounded-md text-xs flex  font-light items-center gap-x-2 uppercase">
         <svg
             xmlns="http://www.w3.org/2000/svg"
