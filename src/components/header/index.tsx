@@ -4,17 +4,18 @@ import { MyContext } from "@/context"
 import Link from "next/link"
 import { useContext } from "react"
 import Image from "next/image"
+import "./checkbox.css"
 // import { useSelector } from "react-redux"
 // import favoriteReducer from "../../store/reducers/favorites"
 
 
 const Header = () => {
     // const favorites = useSelector((state):any => state.favoriteReducer)
-    const { setSearchSubmit, handleButtonClick, handleKeyUp } = useContext(MyContext)
+    const { active, setActive, setSearchSubmit, handleButtonClick, handleKeyUp } = useContext(MyContext)
     const handleInputChange = (event: any) => {
         setSearchSubmit(event.target.value);
     };
-// console.log(favorites)
+    // console.log(favorites)
     return (
         <header className=" flex bg-gray-950 items-center spac border-b ">
             <Image
@@ -38,7 +39,7 @@ const Header = () => {
             </button>
             <Link
                 href={"/favorites"}
-                className="absolute right-16 ">
+                className="absolute sm:right-16 right-20 ">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -53,7 +54,16 @@ const Header = () => {
                     />
                 </svg>
                 <span className="bg-red-700 rounded-full w-full text-center text-xs p-1 absolute bottom-2.5 left-2.5 -scale-75 ">0</span>
+
             </Link>
+            <div className="absolute right-5 sm:hidden block" >
+                <label className="burger" htmlFor="burger" >
+                    <input type="checkbox" id="burger" onClick={()=> setActive(!active)}/>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </label>
+            </div>
         </header>
     )
 }

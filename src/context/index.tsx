@@ -5,16 +5,15 @@ import { IProvider, IProviderProps } from "./types";
 export const MyContext = createContext({} as IProvider);
 
 export const MyContextProvider = ({ children }: IProviderProps) => {
+    const [active, setActive] = useState(false)
     const [filterSelect, setFilterSelect] = useState("repositories");
     const [searchSubmit, setSearchSubmit] = useState("");
     const [dataGitHub, setDataGitHub] = useState([]); 
-    console.log(searchSubmit)
     const handleButtonClick = async () => {
             if (searchSubmit != "") {
                 const response = await fetch(`https://api.github.com/search/${filterSelect}?q=${searchSubmit}`)
                 const data = await response.json();
                 setDataGitHub(data)
-                console.log(data); 
             }else{
                 setDataGitHub([])
             }
@@ -29,7 +28,7 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
         }
     }
     return (
-        <MyContext.Provider value={{ filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, handleButtonClick, dataGitHub, setDataGitHub, handleKeyUp }}>
+        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, handleButtonClick, dataGitHub, setDataGitHub, handleKeyUp }}>
             {children}
         </MyContext.Provider>
     );

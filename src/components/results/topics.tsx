@@ -7,8 +7,9 @@ export const Topics = ({children}:any) => {
         <Suspense fallback={<p>carregando...</p>}>
 
         <div className="flex flex-col h-[calc(100vh-81px)] overflow-auto scrollbar-none w-full p-6 bg-gray-950/95">
-            <p>{dataGitHub.total_count}</p>
-            <ul>
+        {dataGitHub && dataGitHub.total_count > 0 && (
+          <p>Results: {dataGitHub.total_count}</p>
+        )}            <ul>
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (

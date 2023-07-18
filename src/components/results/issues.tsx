@@ -1,4 +1,5 @@
 import { MyContext } from "@/context"
+import moment from "moment"
 import Image from "next/image"
 import { Suspense, useContext } from "react"
 
@@ -8,8 +9,9 @@ export const Issues = ({children}:any) => {
         <Suspense fallback={<p>carregando...</p>}>
 
         <div className="flex flex-col h-[calc(100vh-81px)] overflow-auto scrollbar-none w-full p-6 bg-gray-950/95">
-            <p>{dataGitHub.total_count}</p>
-            <ul>
+        {dataGitHub && dataGitHub.total_count > 0 && (
+          <p>Results: {dataGitHub.total_count}</p>
+        )}            <ul>
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
@@ -22,7 +24,7 @@ export const Issues = ({children}:any) => {
                                     className="rounded-full border-4"
                                 />
                                 <h2>{item.title}</h2>
-                                <p>{item.created_at}</p>
+                                <p>{moment(item.created_at).format("DD/MM/YYYY - HH:MM")}</p>
                                 <p>{item.number}</p>
                                 {children}
                                 {/* <ButtonAddFavourites /> */}

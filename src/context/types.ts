@@ -4,6 +4,8 @@ export interface IProviderProps {
     children: React.ReactNode;
 }
 export interface IProvider {
+    active:boolean,
+    setActive: React.Dispatch<SetStateAction<boolean>>,
     filterSelect: string,
     setFilterSelect: React.Dispatch<SetStateAction<string>>,
     searchSubmit: string,

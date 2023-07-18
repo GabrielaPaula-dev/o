@@ -1,4 +1,5 @@
 import { MyContext } from "@/context"
+import moment from "moment"
 import Image from "next/image"
 import { Suspense, useContext } from "react"
 
@@ -8,8 +9,9 @@ export const Commits = ({children}:any) => {
         <Suspense fallback={<p>carregando...</p>}>
 
         <div className="flex flex-col h-[calc(100vh-81px)] overflow-auto scrollbar-none w-full p-6 bg-gray-950/95">
-            <p>{dataGitHub.total_count}</p>
-            <ul>
+        {dataGitHub && dataGitHub.total_count > 0 && (
+          <p>Results: {dataGitHub.total_count}</p>
+        )}            <ul>
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
@@ -32,7 +34,8 @@ export const Commits = ({children}:any) => {
                                     <p className="text-gray-400 max-w-md py-1.5">{item.commit?.message}</p>
                                 </div>
                                 <div className="mr-28">
-                                    <p>{item.commit?.author?.date}</p>
+                                    <p>{
+                                    moment(item.commit?.author?.date).format("DD/MM/YYYY - HH:MM")}</p>
                                 </div>
                                 {children}
                                 {/* <ButtonAddFavourites /> */}

@@ -60,7 +60,7 @@ const Results = () => {
     }
     else if (filterSelect === "issues") {
         return (
-            <Suspense fallback={<p>carregando...</p>}>
+            <Suspense fallback={<Loading/>}>
 
             <Issues>
                 <ButtonAddFavourites item={Topics} />

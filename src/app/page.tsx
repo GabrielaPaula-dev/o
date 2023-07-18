@@ -1,6 +1,7 @@
 'use server'
 import { Filters } from "@/components/filters"
 import { Header } from "@/components/header"
+import { Loading } from "@/components/loading"
 import { Results } from "@/components/results/index"
 import { MyContextProvider } from "@/context"
 import { Suspense } from "react"
@@ -13,11 +14,11 @@ export default async function Home() {
       {/* <Provider store={store} > */}
       <MyContextProvider>
         <Header />
-        <div className="flex">
+        <div className="flex sm:flex-row flex-col">
           <Filters />
-          {/* <Suspense fallback={<p>carregando...</p>}> */}
+          <Suspense fallback={<Loading/>}>
             <Results />
-          {/* </Suspense> */}
+          </Suspense>
         </div>
       </MyContextProvider >
       {/* </Provider> */}
