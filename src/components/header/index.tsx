@@ -11,11 +11,10 @@ import "./checkbox.css"
 
 const Header = () => {
     // const favorites = useSelector((state):any => state.favoriteReducer)
-    const { active, setActive, setSearchSubmit, handleButtonClick, handleKeyUp } = useContext(MyContext)
+    const { active, setActive, setSearchSubmit,setFilterSelect, SearchApi, handleKeyUp } = useContext(MyContext)
     const handleInputChange = (event: any) => {
         setSearchSubmit(event.target.value);
     };
-    // console.log(favorites)
     return (
         <header className=" flex bg-gray-950 items-center spac border-b ">
             <Image
@@ -33,7 +32,10 @@ const Header = () => {
             />
             <button
                 type="submit"
-                onClick={handleButtonClick}
+                onClick={()=>{
+                    SearchApi
+                    setFilterSelect("repositories")
+            }}
                 className=" border pr-4 py-2.5 border-l-0 rounded-r-md">
                 <BiSearchAlt />
             </button>

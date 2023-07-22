@@ -1,0 +1,25 @@
+.loading-wrapper .item {
+    position: relative;
+    overflow: hidden;
+     background: linear-gradient(
+      -90deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.5) 25%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      rgba(255, 255, 255, 0.2) 100%
+    ); 
+    background-size: 200% 200%;
+    animation: fadeInOut 2s infinite ;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: -135% -135%;
+    }
+  }
+  
+ 

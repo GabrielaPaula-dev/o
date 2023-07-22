@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="text-gray-200 ">
+      <body className="text-gray-200 bg-gray-950 overflow-y-hidden">
         {/* <Provider store={store} > */}
           <main>{children}</main>
         {/* </Provider> */}

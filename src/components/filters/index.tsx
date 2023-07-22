@@ -1,17 +1,24 @@
 'use client'
 import { MyContext } from "@/context"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 
 const Filters = () => {
-    const { active, setFilterSelect, filterSelect, handleKeyUp, setDataGitHub, handleButtonClick } = useContext(MyContext)
-    
+    const { active, setActive, setFilterSelect, filterSelect, handleKeyUp, setDataGitHub, SearchApi, dataGitHub } = useContext(MyContext)
+    if (window.innerWidth > 640) {
+        setActive(true)
+    }
     useEffect(() => {
-        handleButtonClick();
+        if (dataGitHub) {
+            SearchApi();
+            setDataGitHub([])
+        } else {
+            setDataGitHub([])
+        }
     }, [filterSelect]);
     return (
         <>
             {active && (
-                <div className="filters bg-gray-950 xl:w-3/12 md:w-5/12 sm:w-7/12 w-100 sm:h-[calc(100vh-81px)] h-80 border-r pt-10  px-5 ">
+                <div className="filters bg-gray-950 xl:w-1/5 md:w-5/12 sm:w-7/12 sm:h-[calc(100vh-81px)] h-80 border-r pt-10  px-5 ">
                     <h4
                         className="xl:text-2xl font-bold sm:pb-12 pb-6 md:text-xl text-md">
                         Filter by Category
@@ -20,38 +27,38 @@ const Filters = () => {
                         <button
                             className="hover:border-s-2 hover:pl-1"
                             onKeyUp={handleKeyUp}
-                            onClick={() => {
+                            onClick={() =>
                                 setFilterSelect("repositories")
-                                setDataGitHub([])
-                            }}>
+
+                            }>
                             Repositórios
                         </button>
                         <button
                             className="hover:border-s-2 hover:pl-1"
                             onKeyUp={handleKeyUp}
-                            onClick={() => {
-                                handleButtonClick
-
-                                setFilterSelect("users")
-                            }}>
+                            onClick={() =>
+                                setFilterSelect("users")}>
                             Usuários
                         </button>
                         <button
                             className="hover:border-s-2 hover:pl-1"
                             onKeyUp={handleKeyUp}
-                            onClick={() => setFilterSelect("commits")}>
+                            onClick={() =>
+                                setFilterSelect("commits")}>
                             Commits
                         </button>
                         <button
                             className="hover:border-s-2 hover:pl-1"
                             onKeyUp={handleKeyUp}
-                            onClick={() => setFilterSelect("topics")}>
+                            onClick={() =>
+                                setFilterSelect("topics")}>
                             Topics
                         </button>
                         <button
                             className="hover:border-s-2 hover:pl-1"
                             onKeyUp={handleKeyUp}
-                            onClick={() => setFilterSelect("issues")}>
+                            onClick={() =>
+                                setFilterSelect("issues")}>
                             Issues
                         </button>
                     </div>
