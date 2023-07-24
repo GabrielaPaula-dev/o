@@ -16,7 +16,7 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
             const data = await response.json();
             setDataGitHub(data)
         } else {
-            setDataGitHub([])
+            // setDataGitHub([])
         }
     };
     const handleKeyUp = (e: { which: number; keyCode: number; }) => {

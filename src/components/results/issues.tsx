@@ -2,6 +2,7 @@ import { MyContext } from "@/context"
 import moment from "moment"
 import Image from "next/image"
 import { useContext } from "react"
+import { ButtonAddFavourites } from "../buttons/add-favourites"
 
 export const Issues = ({children}:any) => {
     const { dataGitHub } = useContext(MyContext)
@@ -24,7 +25,12 @@ export const Issues = ({children}:any) => {
                                 <h2 className="w-1/2 -ml-10">{item.title}</h2>
                                 <p>{moment(item.created_at).format("DD/MM/YYYY - HH:MM")}</p>
                                 <p>{item.number}</p>
-                                {children}
+                                <ButtonAddFavourites item={{
+                                    id: item.id,
+                                    img:item.user?.avatar_url,
+                                    type:"issue",
+                                    name:item.title,
+                                }}/>
                             </li>
                         )
                     })

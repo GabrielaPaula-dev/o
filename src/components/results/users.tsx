@@ -1,6 +1,7 @@
 import { MyContext } from "@/context"
 import Image from "next/image"
 import { useContext } from "react"
+import { ButtonAddFavourites } from "../buttons/add-favourites"
 
 export const Users = ({ children }: any) => {
     const { dataGitHub } = useContext(MyContext)
@@ -31,7 +32,13 @@ export const Users = ({ children }: any) => {
                                             {item.login}
                                         </a>
                                     </div>
-                                    {children}
+                                    <ButtonAddFavourites item={{
+                                    id: item.id,
+                                    img:item.avatar_url,
+                                    type:"user",
+                                    name:item.login,
+                                    url:item.html_url
+                                }} />
                                 </li>
                             )
                         })

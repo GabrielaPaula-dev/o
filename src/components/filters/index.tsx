@@ -12,7 +12,7 @@ const Filters = () => {
             SearchApi();
             setDataGitHub([])
         } else {
-            setDataGitHub([])
+            setDataGitHub("")
         }
     }, [filterSelect]);
     return (

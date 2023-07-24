@@ -1,5 +1,6 @@
 import { MyContext } from "@/context"
 import { useContext } from "react"
+import { ButtonAddFavourites } from "../buttons/add-favourites"
 
 export const Topics = ({children}:any) => {
     const { dataGitHub } = useContext(MyContext)
@@ -17,7 +18,11 @@ export const Topics = ({children}:any) => {
                                     <p className="text-gray-400 max-w-xl py-1.5">{item.short_description}</p>
                                 </div>
                                 <p>{item.released}</p>
-                                {children}
+                                <ButtonAddFavourites item={{
+                                    id: item.id,
+                                    type:"topic",
+                                    name:item.display_name,
+                                }} />
                             </li>
                         )
                     })
