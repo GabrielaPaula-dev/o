@@ -1,5 +1,5 @@
 import { Skeleton } from "./skeleton"
-import "./css.css"
+import "./animationSkeleton.css"
 
 export const Loading = () => {
 

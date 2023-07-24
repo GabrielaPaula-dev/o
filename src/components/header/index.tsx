@@ -5,12 +5,8 @@ import Link from "next/link"
 import { useContext } from "react"
 import Image from "next/image"
 import "./checkbox.css"
-// import { useSelector } from "react-redux"
-// import favoriteReducer from "../../store/reducers/favorites"
-
 
 const Header = () => {
-    // const favorites = useSelector((state):any => state.favoriteReducer)
     const { active, setActive, setSearchSubmit,setFilterSelect, SearchApi, handleKeyUp } = useContext(MyContext)
     const handleInputChange = (event: any) => {
         setSearchSubmit(event.target.value);
