@@ -15,7 +15,7 @@ export const Repositories = () => {
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
-                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between w-auto text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
+                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between w-auto text-xs lg:text-sm flex-wrap space-y-7 lg:flex-nowrap">
                                 {item.owner?.avatar_url && <Image
                                     src={item.owner?.avatar_url}
                                     height={60}

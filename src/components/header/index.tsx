@@ -7,7 +7,7 @@ import Image from "next/image"
 import "./checkbox.css"
 
 const Header = () => {
-    const { active, setActive, handleKeyUp, handleInputChange,searchRepositories } = useContext(MyContext)
+    const { active, setActive, handleKeyUp, handleInputChange,searchRepositories,SearchApi } = useContext(MyContext)
     const favorites = JSON.parse(localStorage.getItem("@favorites")||"[]")
     const [countFavorite,setCountFavorite]=useState(favorites)
    
@@ -16,6 +16,7 @@ const Header = () => {
             setCountFavorite(favorites)
         }, 50);
     },[favorites])
+ 
     return (
         <header className=" flex bg-gray-950 items-center border-b  ">
             <Image
@@ -37,6 +38,7 @@ const Header = () => {
                 type="submit"
                 onClick={() => {
                     searchRepositories()
+                    SearchApi()
                 }}
                 className=" border sm:pr-4 sm:py-2.5 pr-3.5 py-2 border-l-0 rounded-r-md text-xs sm:text-base">
                 <BiSearchAlt />

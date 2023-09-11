@@ -14,7 +14,7 @@ export const Commits = () => {
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
-                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center  text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
+                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center  text-xs lg:text-sm  flex-wrap space-y-7 lg:flex-nowrap">
                                 {item.author?.avatar_url && <Image
                                     src={item.author?.avatar_url}
                                     height={60}

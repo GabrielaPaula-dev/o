@@ -1,6 +1,8 @@
 'use client'
 import { ChangeEvent, createContext, useState } from "react";
 import { IProvider, IProviderProps } from "./types";
+import { useDispatch } from "react-redux";
+import { add, remove } from "@/features/favorite/slice";
 
 export const MyContext = createContext({} as IProvider);
 
@@ -17,8 +19,6 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
             const response = await fetch(`https://api.github.com/search/${filterSelect}?q=${searchSubmit}`)
             const data = await response.json();
             setDataGitHub(data)
-        } else {
-            // setDataGitHub([])
         }
     };
     const searchRepositories = () => {
@@ -31,6 +31,7 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
         const isEnterKeyPressed = key === 13;
         if (isEnterKeyPressed) {
             if (filterSelect != "" || filterSelect != undefined) {
+                SearchApi()
                 return searchRepositories()
             }
         }
@@ -39,8 +40,9 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
         setInputValue(event.target.value);
         setSearchSubmit(event.target.value);
       };
+     
     return (
-        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, dataGitHub, setDataGitHub, handleKeyUp,addFavorite,setAddFavorite,handleInputChange, inputValue, searchRepositories }}>
+        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, dataGitHub, setDataGitHub, handleKeyUp,addFavorite,setAddFavorite,handleInputChange, inputValue, searchRepositories,}}>
             {children}
         </MyContext.Provider>
     );

@@ -14,7 +14,7 @@ export const Issues = () => {
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
-                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between  text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
+                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between text-xs lg:text-sm  flex-wrap space-y-7 lg:flex-nowrap">
                                 {item.user?.avatar_url && <Image
                                     src={item.user?.avatar_url}
                                     height={60}

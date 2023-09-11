@@ -24,7 +24,7 @@ const Filters = () => {
     return (
         <>
             {active && (
-                <div className="filters bg-gray-950 xl:w-1/5 lg:w-3/12 md:w-4/12 sm:w-5/12 sm:h-[calc(100vh-81px)] h-80 border-r pt-10  px-5 ">
+                <div className="filters bg-gray-950 min-w-max sm:h-[calc(100vh-81px)] h-80 border-r pt-10  px-5 pr-12 md:pr-16 ">
                     <h4
                         className="xl:text-2xl font-bold sm:pb-12 pb-6 md:text-xl text-md">
                         Filter by Category

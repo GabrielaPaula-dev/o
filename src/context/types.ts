@@ -18,6 +18,6 @@ export interface IProvider {
     handleKeyUp: (e: { which: number; keyCode: number; }) => void,
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void,
     inputValue: string,
-    searchRepositories: () => void
+    searchRepositories: () => void,
 }
 
