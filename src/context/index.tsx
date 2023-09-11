@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useState } from "react";
+import { ChangeEvent, createContext, useState } from "react";
 import { IProvider, IProviderProps } from "./types";
 
 export const MyContext = createContext({} as IProvider);
@@ -10,6 +10,8 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
     const [filterSelect, setFilterSelect] = useState("");
     const [searchSubmit, setSearchSubmit] = useState("");
     const [dataGitHub, setDataGitHub] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+
     const SearchApi = async () => {
         if (searchSubmit != "") {
             const response = await fetch(`https://api.github.com/search/${filterSelect}?q=${searchSubmit}`)
@@ -19,20 +21,26 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
             // setDataGitHub([])
         }
     };
+    const searchRepositories = () => {
+        if (inputValue.trim() !== "") {
+          setFilterSelect("repositories");
+        }
+      };
     const handleKeyUp = (e: { which: number; keyCode: number; }) => {
         const key = e.which || e.keyCode;
         const isEnterKeyPressed = key === 13;
         if (isEnterKeyPressed) {
             if (filterSelect != "" || filterSelect != undefined) {
-
-                setFilterSelect("repositories")
-
-                return SearchApi()
+                return searchRepositories()
             }
         }
     }
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+        setSearchSubmit(event.target.value);
+      };
     return (
-        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, dataGitHub, setDataGitHub, handleKeyUp,addFavorite,setAddFavorite }}>
+        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, dataGitHub, setDataGitHub, handleKeyUp,addFavorite,setAddFavorite,handleInputChange, inputValue, searchRepositories }}>
             {children}
         </MyContext.Provider>
     );

@@ -9,36 +9,38 @@ import { Issues } from "./issues"
 import { Loading } from "../loading"
 
 const Results = () => {
-    const { filterSelect, dataGitHub } = useContext(MyContext)
+    const { filterSelect, dataGitHub} = useContext(MyContext)
     if (filterSelect === "repositories") {
-        return (
-            <>
-                {dataGitHub.items ? (<Repositories/>) : (<Loading/>)}
-            </>
-        )
+            return (
+                <>
+                    {dataGitHub.items ? (<Repositories />) : (<Loading />)}
+                </>
+            )
+       
     } else if (filterSelect === "users") {
         return (
             <>
-                {dataGitHub.items ? (<Users/>)  : (<Loading />)}
+                {dataGitHub.items ? (<Users />) : (<Loading />)}
             </>
         )
     } else if (filterSelect === "commits") {
         return (
             <>
-                {dataGitHub.items ? (<Commits/>) : (<Loading />)}
+                {dataGitHub.items ? (<Commits />) : (<Loading />)}
             </>
         )
+    
     } else if (filterSelect === "topics") {
         return (
             <>
-                {dataGitHub.items ? (<Topics/>) : (<Loading />)}
+                {dataGitHub.items ? (<Topics />) : (<Loading />)}
             </>
         )
     }
     else if (filterSelect === "issues") {
         return (
             <>
-                {dataGitHub.items ? (<Issues/>) : (<Loading />)}
+                {dataGitHub.items ? (<Issues />) : (<Loading />)}
             </>
         )
     }

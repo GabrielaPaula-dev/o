@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useContext } from "react"
 import { ButtonAddFavourites } from "../buttons/add-favourites"
 
-export const Users = ({ children }: any) => {
+export const Users = () => {
     const { dataGitHub } = useContext(MyContext)
 
     return (
@@ -15,7 +15,7 @@ export const Users = ({ children }: any) => {
                     {
                         dataGitHub.items?.map((item: any, index: number) => {
                             return (
-                                <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between ">
+                                <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between  text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
                                     <div className="flex items-center gap-x-4">
                                         {item.avatar_url && <Image
                                             src={item.avatar_url}

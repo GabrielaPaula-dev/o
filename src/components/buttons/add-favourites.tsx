@@ -34,7 +34,7 @@ export const ButtonAddFavourites = ({ item }: any) => {
     return (
         <button
             onClick={handleOnClick}
-            className="flex items-center gap-x-2 uppercase text-sm border py-2.5 px-3 rounded bg-gray-800"
+            className="flex items-center gap-x-2 uppercase text-xs lg:text-md xl:text-lg border py-2.5 px-3 rounded bg-gray-800 "
         >
             {addFavorite ? (
                 <AiFillStar className="text-yellow-500 text-lg" />

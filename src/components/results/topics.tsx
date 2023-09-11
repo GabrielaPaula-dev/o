@@ -2,7 +2,7 @@ import { MyContext } from "@/context"
 import { useContext } from "react"
 import { ButtonAddFavourites } from "../buttons/add-favourites"
 
-export const Topics = ({children}:any) => {
+export const Topics = () => {
     const { dataGitHub } = useContext(MyContext)
     return (
         <div className="flex flex-col h-[calc(100vh-81px)] grow overflow-auto scrollbar-none w-fit p-6 bg-gray-950/95">
@@ -12,10 +12,10 @@ export const Topics = ({children}:any) => {
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
-                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between ">
+                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between  text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
                                 <div>
                                     <h2 className="uppercase hover:text-white font-bold">{item.display_name}</h2>
-                                    <p className="text-gray-400 max-w-xl py-1.5">{item.short_description}</p>
+                                    <p className="text-gray-400 max-w-xl 2xl:max-w-6xl py-1.5">{item.short_description}</p>
                                 </div>
                                 <p>{item.released}</p>
                                 <ButtonAddFavourites item={{

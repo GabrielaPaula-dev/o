@@ -2,12 +2,6 @@
 import { ReduxProvider } from '@/features/favorite/provider'
 import './globals.css'
 
-// export const metadata = {
-//   title:{
-//     default: 'GitHub',
-//     template:'%s | Github'
-//   }
-// }
 export default async function RootLayout({
   children,
 }: {
@@ -16,13 +10,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-
-      </head>
-      <body className="text-gray-200 bg-gray-950 overflow-y-hidden">
-        <ReduxProvider>
-        {children}
-        </ReduxProvider>
-      </body>
-    </html>
-  )
+        <meta charSet="UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link rel="shortcut icon" href="/logo-github.png" type="image/x-icon"></link>
+            <title>GitHub</title>
+          </head>
+          <body className="text-gray-200 bg-gray-950 overflow-y-hidden">
+            <ReduxProvider>
+              {children}
+            </ReduxProvider>
+          </body>
+        </html>
+        )
 }

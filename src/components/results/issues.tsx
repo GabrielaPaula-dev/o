@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useContext } from "react"
 import { ButtonAddFavourites } from "../buttons/add-favourites"
 
-export const Issues = ({children}:any) => {
+export const Issues = () => {
     const { dataGitHub } = useContext(MyContext)
     return (
         <div className="flex flex-col h-[calc(100vh-81px)] grow overflow-auto scrollbar-none w-fit p-6 bg-gray-950/95">
@@ -14,7 +14,7 @@ export const Issues = ({children}:any) => {
                 {
                     dataGitHub.items?.map((item: any, index: number) => {
                         return (
-                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between ">
+                            <li key={index} className="flex border p-5 rounded-lg my-5 gap-x-4 items-center justify-between  text-xs lg:text-md xl:text-lg flex-wrap space-y-7 lg:flex-nowrap">
                                 {item.user?.avatar_url && <Image
                                     src={item.user?.avatar_url}
                                     height={60}
