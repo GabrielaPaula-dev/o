@@ -15,7 +15,7 @@ export default function Favorites() {
         setAddFavorite(!addFavorite);
         dispatch(remove(id))
         const favoritesFromStorage = JSON.parse(localStorage.getItem("@favorites") || "[]");
-        const updatedFavorites = favoritesFromStorage.filter((favoriteItem: { id: any; }) => favoriteItem.id !== id);
+        const updatedFavorites = favoritesFromStorage.filter((favoriteItem: { id: number; }) => favoriteItem.id !== id);
         localStorage.setItem("@favorites", JSON.stringify(updatedFavorites))
     }
     const removeAll = () => {

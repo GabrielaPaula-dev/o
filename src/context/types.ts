@@ -13,11 +13,18 @@ export interface IProvider {
     searchSubmit: string,
     setSearchSubmit: React.Dispatch<SetStateAction<string>>,
     SearchApi: () => void,
-    dataGitHub: any,
-    setDataGitHub: React.Dispatch<SetStateAction<any>>,
+    // dataGitHub: any,
+    // setDataGitHub: React.Dispatch<SetStateAction<any>>,
     handleKeyUp: (e: { which: number; keyCode: number; }) => void,
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void,
     inputValue: string,
     searchRepositories: () => void,
 }
 
+export interface ICommit {
+    img: string,
+    urlName:string,
+    nameUser:string,
+    message: string,
+    date:string
+}

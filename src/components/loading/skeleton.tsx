@@ -1,4 +1,3 @@
-// import "./animationSkeleton.css"
 export const Skeleton = () => {
     return (
         <div className=" flex border p-5 rounded-lg my-3 items-center justify-between animate-puls ">

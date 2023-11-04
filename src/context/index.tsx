@@ -1,8 +1,6 @@
 'use client'
 import { ChangeEvent, createContext, useState } from "react";
-import { IProvider, IProviderProps } from "./types";
-import { useDispatch } from "react-redux";
-import { add, remove } from "@/features/favorite/slice";
+import { IProvider, IProviderProps, ICommit } from "./types";
 
 export const MyContext = createContext({} as IProvider);
 
@@ -11,13 +9,29 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
     const [addFavorite,setAddFavorite]=useState(false)
     const [filterSelect, setFilterSelect] = useState("");
     const [searchSubmit, setSearchSubmit] = useState("");
-    const [dataGitHub, setDataGitHub] = useState([]);
+    const [dataGitHub, setDataGitHub] = useState({});
     const [inputValue, setInputValue] = useState("");
 
     const SearchApi = async () => {
         if (searchSubmit != "") {
             const response = await fetch(`https://api.github.com/search/${filterSelect}?q=${searchSubmit}`)
             const data = await response.json();
+            console.log(data);
+            switch (filterSelect) {
+                case "commits":
+                    const commit:ICommit = {
+                        img: data.author?.avatar_url,
+                        urlName:data.author?.html_url,
+                        nameUser:data.author?.login,
+                        message: data.commit?.message,
+                        date:data.commit?.author?.date
+                    }
+                    setDataGitHub(commit)
+                    break;
+                default:
+                    setDataGitHub(data)
+                    break;
+            }
             setDataGitHub(data)
         }
     };
@@ -42,7 +56,7 @@ export const MyContextProvider = ({ children }: IProviderProps) => {
       };
      
     return (
-        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, dataGitHub, setDataGitHub, handleKeyUp,addFavorite,setAddFavorite,handleInputChange, inputValue, searchRepositories,}}>
+        <MyContext.Provider value={{ active, setActive, filterSelect, setFilterSelect, searchSubmit, setSearchSubmit, SearchApi, handleKeyUp,addFavorite,setAddFavorite,handleInputChange, inputValue, searchRepositories,}}>
             {children}
         </MyContext.Provider>
     );
